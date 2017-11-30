@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block content %}
+        <script>
+            var URL = "{% url 'my_view_that_updates_pieFact' %}";
+        </script>
+<button type="button" id=bttnMinus onclick="pieFact=pieFact*0.9">-</button>
+<button type="button" id=bttnPlus onclick="pieFact=pieFact*1.1">+</button></td> 
+
+ {% endblock %}

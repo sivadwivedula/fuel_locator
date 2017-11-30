@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content%}
+ <h1 id="brand" >Update ur details</h1>
+ <br>
+<form action="{%url 'pumps:create'%}" method='POST' role="form">
+{% csrf_token %}
+
+
+{% for fields in form %}
+	<div class="form-group">
+		<label for="name">{{fields.label}}:</label>{{fields}}
+	</div>
+
+	{% endfor%}
+	<div style="text-align:center"> 
+	<input type='submit' name='submit value='create' class="btn btn-success" style="width:100%">
+	</div>
+	<br>
+</form>
+{% endblock%}

@@ -1,0 +1,15 @@
+{%extends "base.html" %}
+{% block content %}
+<form action="" method="post">
+	<li style="color:red">{{warning}}</li>
+    {% csrf_token %}
+    {{ form }}
+    <input type="submit" value="Submit" />
+</form>
+<br>
+<h4>Didn't Get Otp?</h4>
+<div id="otp" style="text-align:center;">
+	<a  href="/user/otp_regen"  role="button"class="btn btn-success col-sm-3" style="width:35%">Regenarte Otp</a>
+	</div>
+	
+{% endblock %}

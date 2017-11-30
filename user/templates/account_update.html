@@ -1,0 +1,96 @@
+{% extends "base.html" %}
+{% load static %}
+{% load i18n %}
+{% block content%}
+<head>
+<meta charset="utf-8">
+<style>
+
+#map {
+height: 300px;
+width:300px;
+}
+</style>
+</head>
+<h1 id="detail">Add Details</h1>
+ <div class="row" id="data">   
+<div class="col-sm-5">
+     
+        <h2 class="flow-text">Update your information</h2>
+          <form action="." method="POST" class="form-group">
+            {% csrf_token %} 
+            {{ noodle_form }}
+           
+            {{ formset.management_form}}
+                {{ formset.as_table}}
+            <button type="submit" class="btn-floating btn-large waves-light waves-effect"><i class="large material-icons">done</i></button>
+            <a href="#" onclick="window.history.back(); return false;" title="Cancel" class="btn-floating waves-effect waves-light red"><i class="material-icons">history</i></a>
+
+        </form>
+      </div> 
+<div class="col-sm-5">
+
+<body class="">
+<!-- <form>
+<label for="latitude">Latitude:</label>
+<input id="latitude" type="text">
+<label for="longitude">Longitude:</label>
+<input id="longitude" type="text">
+:: <a href="#" onclick="map.zoomOut(3, {animate:true})">zoom out</a> ::
+:: <a href="#" onclick="map.zoomIn(3, {animate:true})">zoom in</a>
+</form> -->
+<div id="map" class="leaflet-container leaflet-fade-anim" tabindex="0" style="position: relative;"><div class="leaflet-map-pane" style="transform: translate3d(-73px, -83px, 0px);"><div class="leaflet-tile-pane"><div class="leaflet-layer"><div class="leaflet-tile-container"></div><div class="leaflet-tile-container leaflet-zoom-animated"><img class="leaflet-tile leaflet-tile-loaded" src="http://c.tile.openstreetmap.org/12/2888/1833.png" style="height: 256px; width: 256px; left: 277px; top: 129px;"><img class="leaflet-tile leaflet-tile-loaded" src="http://b.tile.openstreetmap.org/12/2887/1833.png" style="height: 256px; width: 256px; left: 21px; top: 129px;"><img class="leaflet-tile leaflet-tile-loaded" src="http://b.tile.openstreetmap.org/12/2888/1832.png" style="height: 256px; width: 256px; left: 277px; top: -127px;"><img class="leaflet-tile leaflet-tile-loaded" src="http://a.tile.openstreetmap.org/12/2887/1832.png" style="height: 256px; width: 256px; left: 21px; top: -127px;"><img class="leaflet-tile leaflet-tile-loaded" src="http://c.tile.openstreetmap.org/12/2887/1834.png" style="height: 256px; width: 256px; left: 21px; top: 385px;"><img class="leaflet-tile leaflet-tile-loaded" src="http://a.tile.openstreetmap.org/12/2888/1834.png" style="height: 256px; width: 256px; left: 277px; top: 385px;"><img class="leaflet-tile leaflet-tile-loaded" src="http://a.tile.openstreetmap.org/12/2886/1833.png" style="height: 256px; width: 256px; left: -235px; top: 129px;"><img class="leaflet-tile leaflet-tile-loaded" src="http://a.tile.openstreetmap.org/12/2889/1833.png" style="height: 256px; width: 256px; left: 533px; top: 129px;"><img class="leaflet-tile leaflet-tile-loaded" src="http://b.tile.openstreetmap.org/12/2886/1834.png" style="height: 256px; width: 256px; left: -235px; top: 385px;"><img class="leaflet-tile leaflet-tile-loaded" src="http://c.tile.openstreetmap.org/12/2886/1832.png" style="height: 256px; width: 256px; left: -235px; top: -127px;"><img class="leaflet-tile leaflet-tile-loaded" src="http://c.tile.openstreetmap.org/12/2889/1832.png" style="height: 256px; width: 256px; left: 533px; top: -127px;"><img class="leaflet-tile leaflet-tile-loaded" src="http://b.tile.openstreetmap.org/12/2889/1834.png" style="height: 256px; width: 256px; left: 533px; top: 385px;"><img class="leaflet-tile leaflet-tile-loaded" src="http://b.tile.openstreetmap.org/12/2890/1833.png" style="height: 256px; width: 256px; left: 789px; top: 129px;"><img class="leaflet-tile leaflet-tile-loaded" src="http://a.tile.openstreetmap.org/12/2890/1832.png" style="height: 256px; width: 256px; left: 789px; top: -127px;"><img class="leaflet-tile leaflet-tile-loaded" src="http://c.tile.openstreetmap.org/12/2890/1834.png" style="height: 256px; width: 256px; left: 789px; top: 385px;"></div></div></div><div class="leaflet-objects-pane"><div class="leaflet-shadow-pane"><img src="http://cdn.leafletjs.com/leaflet-0.7.3/images/marker-shadow.png" class="leaflet-marker-shadow leaflet-zoom-animated" style="margin-left: -12px; margin-top: -41px; width: 41px; height: 41px; transform: translate3d(414px, 313px, 0px);"></div><div class="leaflet-overlay-pane"></div><div class="leaflet-marker-pane"><img src="http://cdn.leafletjs.com/leaflet-0.7.3/images/marker-icon.png" class="leaflet-marker-icon leaflet-zoom-animated leaflet-clickable leaflet-marker-draggable" tabindex="0" style="margin-left: -12px; margin-top: -41px; width: 25px; height: 41px; transform: translate3d(414px, 313px, 0px); z-index: 324;"></div><div class="leaflet-popup-pane"></div></div></div><div class="leaflet-control-container"><div class="leaflet-top leaflet-left"><div class="leaflet-control-zoom leaflet-bar leaflet-control"><a class="leaflet-control-zoom-in" href="#" title="Zoom in">+</a><a class="leaflet-control-zoom-out" href="#" title="Zoom out">-</a></div></div><div class="leaflet-top leaflet-right"></div><div class="leaflet-bottom leaflet-left"></div><div class="leaflet-bottom leaflet-right"><div class="leaflet-control-attribution leaflet-control"><a href="http://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> | © <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> Contributors</div></div></div></div>
+<script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script> <!-- Orginal: http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js -->
+<script>
+var tileLayer = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> Contributors'
+});
+//remember last position
+var rememberLat = document.getElementById('id_user-0-latitude').value;
+var rememberLong = document.getElementById('id_user-0-longitude').value;
+if( !rememberLat || !rememberLong ) { rememberLat = 18.53; rememberLong = 73.85;}
+var map = new L.Map('map', {
+'center': [rememberLat, rememberLong],
+'zoom': 12,
+'layers': [tileLayer]
+});
+var marker = L.marker([rememberLat, rememberLong],{
+draggable: true
+}).addTo(map);
+marker.on('dragend', function (e) {
+updateLatLng(marker.getLatLng().lat, marker.getLatLng().lng);
+console.log("Latitude is" +marker.getLatLng().lat + "Longitude is " + marker.getLatLng().lng);
+});
+map.on('click', function (e) {
+marker.setLatLng(e.latlng);
+updateLatLng(marker.getLatLng().lat, marker.getLatLng().lng);
+
+
+});
+function updateLatLng(lat,lng,reverse) {
+if(reverse) {
+marker.setLatLng([lat,lng]);
+map.panTo([lat,lng]);
+} else {
+document.getElementById('id_user-0-latitude').value = marker.getLatLng().lat;
+document.getElementById('id_user-0-longitude').value = marker.getLatLng().lng;
+map.panTo([lat,lng]);
+}
+}
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){
+	 $('select[id$="-petrol"]').on('change', function() {
+		 if(this.value==3){
+			 $('*[id$="-price_petrol"]').hide();
+		 }
+		 else {
+			 $('*[id$="-price_petrol"]').show();			 
+		 }
+	});
+ });
+ </script>
+ 
+{% endblock%}

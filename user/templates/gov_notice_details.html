@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}
+	<h1 class="back">{{ n1.subject }}</h1>
+    <table class="table table-striped  table-responsive">
+    <tr><th style="width: 40%">Subject</th><td>{{ nl.subject}}</td></tr>    
+    <tr><th>Message</th><td>{{ nl.message}}</td></tr>    
+    <tr><th>Created Date</th><td>{{ nl.cr_date}}</td></tr>    
+	</table>
+	<a href="/user/">Back</a>
+{% endblock %}
+
+
+
